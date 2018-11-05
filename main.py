@@ -22,7 +22,7 @@ from data_analyser import data_analyser
 """
 
 def choose():
-    inputs = ui.get_inputs(["Please enter a number: "], "")  # TODO importy ?!
+    inputs = ui.get_inputs(["Please enter a number: "], "")  # TODO importy ?! zrbić ?
     option = inputs[0]
     if option == "1":
         store.start_module()
