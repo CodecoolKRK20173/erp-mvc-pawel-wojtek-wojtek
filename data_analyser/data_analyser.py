@@ -9,7 +9,6 @@ Use the functions of the modules instead.
 # todo: importing everything you need
 
 # importing everything you need
-import 
 import common
 from sales import sales
 from crm import crm
@@ -38,7 +37,7 @@ def get_the_last_buyer_name():
         str: Customer name of the last buyer
     """
 
-    # your code
+    return crm.get_name_by_id(get_the_last_buyer_id)
 
 
 def get_the_last_buyer_id():

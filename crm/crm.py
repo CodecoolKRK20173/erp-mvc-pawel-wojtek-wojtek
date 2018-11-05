@@ -149,9 +149,7 @@ def get_name_by_id(id):
     for item in table:
         if item[id_index] == id:
             return item[name_index]
-    return None    
-
-print(get_name_by_id('abc'))
+    return None
 
 def get_name_by_id_from_table(table, id):
     """
