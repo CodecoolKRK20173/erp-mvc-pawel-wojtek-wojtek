@@ -10,6 +10,7 @@ Data table structure:
 """
 
 # everything you'll need is imported:
+from controller.common import bcolors
 from model import data_manager
 from model import common
 
@@ -25,8 +26,10 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    # your code
-
+    index_id = 0
+    record.insert(index_id, common.generate_random(table))
+    table.append(record)
+    data_manager.write_table_to_file("model/store/games.csv", table)
     return table
 
 
@@ -42,8 +45,10 @@ def remove(table, id_):
         list: Table without specified record.
     """
 
-    # your code
-
+    for i, record in enumerate(table, 1):
+        if str(i) == id_:
+            del table[i - 1]
+    data_manager.write_table_to_file("model/store/games.csv", table)
     return table
 
 
@@ -59,9 +64,14 @@ def update(table, id_, record):
     Returns:
         list: table with updated record
     """
-
-    # your code
-
+    for i, item in enumerate(table, 1):
+        if str(i) == id_:
+            index = 1
+            for item_from_table, item_from_new_record in zip(table[i - 1][1:], record):  # TODO [1:] pomijam zchaszowany index
+                if item_from_new_record != '':
+                    table[i - 1][index] = item_from_new_record
+                index += 1
+    data_manager.write_table_to_file("model/store/games.csv", table)
     return table
 
 
@@ -78,8 +88,14 @@ def get_counts_by_manufacturers(table):
     Returns:
          dict: A dictionary with this structure: { [manufacturer] : [count] }
     """
-
-    # your code
+    counts_by_manufactures = {}
+    index_manufacturer = 2
+    for manufacturer in table:
+        if manufacturer[index_manufacturer] in counts_by_manufactures:
+            counts_by_manufactures[manufacturer[index_manufacturer]] += 1
+        else:
+            counts_by_manufactures[manufacturer[index_manufacturer]] = 1
+    return counts_by_manufactures
 
 
 def get_average_by_manufacturer(table, manufacturer):
@@ -93,5 +109,15 @@ def get_average_by_manufacturer(table, manufacturer):
     Returns:
          number
     """
-
-    # your code
+    index_manufacturer = 2
+    index_stock = 4
+    sum_amount = 0
+    number_of_games = 0
+    for item in table:
+        if item[index_manufacturer] == manufacturer:
+            number_of_games += 1
+            sum_amount += int(item[index_stock])
+    if number_of_games != 0:
+        return sum_amount / number_of_games
+    else:
+        return str(f'{bcolors.WARNING}not find{bcolors.ENDC}')

@@ -9,3 +9,9 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+#  TODO czy jestes pewny ze chcesz usunąć ?  dodaj save do kazdego kontrolera
+#  TODO co to jest za zapis                  def get_inputs(list_labels, title) -> object:
+
+
