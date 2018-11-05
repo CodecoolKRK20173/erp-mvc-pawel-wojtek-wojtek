@@ -1,10 +1,8 @@
 # Do not modify this file
 # run this program (the ERP software) from the terminal from thd root directory of this project
 
-<<<<<<< HEAD
 from controller import root_controller
-=======
-
+"""
 import sys
 import ui  # User Interface
 # Store module
@@ -21,7 +19,7 @@ from sales import sales
 from crm import crm
 # Data Analyser module
 from data_analyser import data_analyser
-
+"""
 
 def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -56,7 +54,6 @@ def handle_menu():
 
     ui.print_menu("Main menu", options, "Exit program")
 
->>>>>>> 5a3af244b3a3eccf28e1826176285fb7c7f82de0
 
 def main():
     root_controller.run()
