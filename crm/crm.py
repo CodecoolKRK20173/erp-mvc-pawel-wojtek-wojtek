@@ -10,11 +10,11 @@ Data table structure:
 
 # everything you'll need is imported:
 # User interface module
-import ui
+#import ui
 # data manager module
-import data_manager
+from model import data_manager
 # common module
-import common
+from model import common
 
 
 def start_module():
@@ -143,10 +143,15 @@ def get_name_by_id(id):
     Returns:
         str: the name of the customer
     """
+    id_index = 0
+    name_index = 1
+    table = data_manager.get_table_from_file("model/crm/customers.csv")
+    for item in table:
+        if item[id_index] == id:
+            return item[name_index]
+    return None    
 
-    # your code
-
-
+print(get_name_by_id('abc'))
 
 def get_name_by_id_from_table(table, id):
     """
