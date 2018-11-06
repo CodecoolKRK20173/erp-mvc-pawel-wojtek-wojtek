@@ -36,7 +36,8 @@ def run():
 			['Price', int],
 			['Month', 'month'],
 			['Day', 'day'],
-			['Year', 'year']
+			['Year', 'year'],
+            ['Customer ID', str],
 		]
 		user_choice = terminal_view.get_choice(list_options)
 		if user_choice in ['1', '2', '3', '4']:

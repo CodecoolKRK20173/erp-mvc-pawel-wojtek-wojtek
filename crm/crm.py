@@ -10,11 +10,11 @@ Data table structure:
 
 # everything you'll need is imported:
 # User interface module
-import ui
+#import ui
 # data manager module
-import data_manager
+from model import data_manager
 # common module
-import common
+from model import common
 
 
 def start_module():
@@ -159,5 +159,11 @@ def get_name_by_id_from_table(table, id):
     Returns:
         str: the name of the customer
     """
+    id_index = 1
+    name_index = 2
+    for item in table:
+        if id == item[id_index]:
+            return item[name_index]
+    return None
 
     # your code
