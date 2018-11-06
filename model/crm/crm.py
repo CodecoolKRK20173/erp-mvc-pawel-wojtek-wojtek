@@ -145,7 +145,7 @@ def get_name_by_id(id):
     """
 
     # your code
-    table = data_manager.get_table_from_file("customers.csv")
+    table = data_manager.get_table_from_file("model/customers/customers.csv")
     id_index = 1
     name_index = 2
     for item in table:
