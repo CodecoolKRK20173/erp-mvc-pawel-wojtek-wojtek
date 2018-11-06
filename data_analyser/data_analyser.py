@@ -88,9 +88,10 @@ def get_the_most_frequent_buyers_names(num=1):
 
     number_of_items_bought = get_the_most_frequent_buyers_ids(num)
     names_of_the_most_frequent_buyers = []
+    customer_id_index = 0
     for customer in number_of_items_bought:
         customer = list(customer)
-        customer[0] = crm.get_name_by_id(customer[0])
+        customer[customer_id_index] = crm.get_name_by_id(customer[customer_id_index])
         names_of_the_most_frequent_buyers.append(tuple(customer))
     return names_of_the_most_frequent_buyers
 
@@ -111,10 +112,11 @@ def get_the_most_frequent_buyers_ids(num=1):
 
     number_of_items_bought = sales.get_num_of_sales_per_customer_ids()
     most_frequent_buyers = []
-    sorted_number_of_items_bought = sorted(number_of_items_bought.items(), key=lambda x: x[1])
+    sales_index = 1
+    sorted_number_of_items_bought = sorted(number_of_items_bought.items(), key=lambda x: x[sales_index])
     for key, value in number_of_items_bought.items():
         most_frequent_buyers.append((key, value))
-    most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse = True, key = lambda x: x[1])
+    most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse = True, key = lambda x: x[sales_index])
     if len(most_frequent_buyers_sorted) > num:
         return most_frequent_buyers_sorted[:num]
     return most_frequent_buyers_sorted
