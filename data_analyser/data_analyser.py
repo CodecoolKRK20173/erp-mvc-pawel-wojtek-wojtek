@@ -9,7 +9,7 @@ Use the functions of the modules instead.
 # todo: importing everything you need
 
 # importing everything you need
-import common
+from model import common
 from sales import sales
 from crm import crm
 
@@ -86,7 +86,14 @@ def get_the_most_frequent_buyers_names(num=1):
             The first one bought the most frequent. eg.: [('Genoveva Dingess', 8), ('Missy Stoney', 3)]
     """
 
-    # your code
+    number_of_items_bought = get_the_most_frequent_buyers_ids(num)
+    names_of_the_most_frequent_buyers = []
+    for customer in number_of_items_bought:
+        customer = list(customer)
+        customer[0] = crm.get_name_by_id(customer[0])
+        names_of_the_most_frequent_buyers.append(tuple(customer))
+    return names_of_the_most_frequent_buyers
+
 
 
 def get_the_most_frequent_buyers_ids(num=1):
@@ -102,4 +109,12 @@ def get_the_most_frequent_buyers_ids(num=1):
             The first one bought the most frequent. eg.: [(aH34Jq#&, 8), (bH34Jq#&, 3)]
     """
 
-    # your code
+    number_of_items_bought = sales.get_num_of_sales_per_customer_ids()
+    most_frequent_buyers = []
+    sorted_number_of_items_bought = sorted(number_of_items_bought.items(), key=lambda x: x[1])
+    for key, value in number_of_items_bought.items():
+        most_frequent_buyers.append((key, value))
+    most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse = True, key = lambda x: x[1])
+    if len(most_frequent_buyers_sorted) > num:
+        return most_frequent_buyers_sorted[:num]
+    return most_frequent_buyers_sorted
