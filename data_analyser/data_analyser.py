@@ -70,7 +70,14 @@ def get_the_buyer_id_spent_most_and_the_money_spent():
         tuple: Tuple of customer id and the sum the customer spent eg.: (aH34Jq#&, 42)
     """
 
-    # your code
+    customers_sales_ids = sales.get_all_sales_ids_for_customer_ids()
+    customers_spending = []
+    sum_index = 1
+    for customer, sales_ids in customers_sales_ids.items():
+        sales_ids = sales.get_the_sum_of_prices(sales_ids)
+        customers_spending.append((customer, sales_ids))
+    customers_spending = sorted(customers_spending, reverse = True, key = lambda x: x[sum_index]))   
+    return customers_spending[0]
 
 
 def get_the_most_frequent_buyers_names(num=1):
