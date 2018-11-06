@@ -145,14 +145,13 @@ def get_name_by_id(id):
     """
 
     # your code
-    table = data_manager.get_table_from_file("model/customers/customers.csv")
-    id_index = 1
-    name_index = 2
+    table = data_manager.get_table_from_file("model/crm/customers.csv")
+    id_index = 0
+    name_index = 1
     for item in table:
         if id == item[id_index]:
             return item[name_index]
     return None
-
 
 def get_name_by_id_from_table(table, id):
     """

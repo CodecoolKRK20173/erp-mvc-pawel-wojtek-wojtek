@@ -11,8 +11,8 @@ Use the functions of the modules instead.
 # importing everything you need
 from view import terminal_view
 from model import common
-from model import sales
-from model import crm
+from model.sales import sales
+from model.crm import crm
 
 
 def start_module():
@@ -51,7 +51,6 @@ def get_the_last_buyer_id():
 
     return sales.get_customer_id_by_sale_id(sales.get_item_id_sold_last())
 
-
 def get_the_buyer_name_spent_most_and_the_money_spent():
     """
     Returns the customer's _name_ who spent the most in sum and the money (s)he spent.
@@ -59,10 +58,13 @@ def get_the_buyer_name_spent_most_and_the_money_spent():
     Returns:
         tuple: Tuple of customer name and the sum the customer spent eg.: ('Daniele Coach', 42)
     """
-
+    name_index = 0
+    sum_index = 1
     customer = get_the_buyer_id_spent_most_and_the_money_spent()
-    customer_name = crm.get_name_by_id(customer[0])
-    return (customer_name, customer[1])
+    customer_name = customer[name_index]
+    customer_name = crm.get_name_by_id(customer[name_index])
+    return (customer_name, customer[sum_index])
+
 
 
 def get_the_buyer_id_spent_most_and_the_money_spent():
@@ -79,10 +81,10 @@ def get_the_buyer_id_spent_most_and_the_money_spent():
     for customer, sales_ids in customers_sales_ids.items():
         sales_ids = sales.get_the_sum_of_prices(sales_ids)
         customers_spending.append((customer, sales_ids))
-    customers_spending = sorted(customers_spending, reverse = True, key = lambda x: x[sum_index]))   
+    customers_spending = sorted(customers_spending, reverse = True, key = lambda x: x[sum_index])   
     return customers_spending[0]
 
-
+print(get_the_buyer_name_spent_most_and_the_money_spent())
 def get_the_most_frequent_buyers_names(num=1):
     """
     Returns 'num' number of buyers (more precisely: the customer's name) who bought most frequently in an
