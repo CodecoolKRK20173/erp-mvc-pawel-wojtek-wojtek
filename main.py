@@ -2,7 +2,7 @@
 # run this program (the ERP software) from the terminal from thd root directory of this project
 
 from controller import root_controller
-"""
+'''
 import sys
 import ui  # User Interface
 # Store module
@@ -19,7 +19,7 @@ from sales import sales
 from crm import crm
 # Data Analyser module
 from data_analyser import data_analyser
-"""
+'''
 
 def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")  # TODO importy ?! zrbić ?
@@ -63,7 +63,11 @@ if __name__ == '__main__':
     main()
 
 
+
 #  TODO czy jestes pewny ze chcesz usunąć ?  dodaj save do kazdego kontrolera
 #  TODO co to jest za zapis                  def get_inputs(list_labels, title) -> object:
+
+
+
 
 

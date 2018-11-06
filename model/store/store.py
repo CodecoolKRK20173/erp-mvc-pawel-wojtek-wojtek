@@ -10,7 +10,6 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from controller.common import bcolors
 from model import data_manager
 from model import common
 
