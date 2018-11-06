@@ -10,11 +10,11 @@ Data table structure:
 
 # everything you'll need is imported:
 # User interface module
-import ui
+#import ui
 # data manager module
-import data_manager
+from model import data_manager
 # common module
-import common
+from model import common
 
 
 def start_module():
