@@ -128,3 +128,46 @@ def get_subscribed_emails(table):
             list_emails.append(';'.join([item[index_email], item[index_name]]))
     return list_emails
 
+
+# functions supports data analyser
+# --------------------------------
+
+def get_name_by_id(id):
+    """
+    Reads the table with the help of the data_manager module.
+    Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
+
+    Args:
+        id (str): the id of the customer
+
+    Returns:
+        str: the name of the customer
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/customers/customers.csv")
+    id_index = 1
+    name_index = 2
+    for item in table:
+        if id == item[id_index]:
+            return item[name_index]
+    return None
+
+
+def get_name_by_id_from_table(table, id):
+    """
+    Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
+
+    Args:
+        table (list of lists): the customer table
+        id (str): the id of the customer
+
+    Returns:
+        str: the name of the customer
+    """
+    id_index = 1
+    name_index = 2
+    for item in table:
+        if id == item[id_index]:
+            return item[name_index]
+    return None

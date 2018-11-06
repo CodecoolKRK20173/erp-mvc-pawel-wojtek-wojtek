@@ -1,13 +1,15 @@
+
 """ Sales module
 
 Data table structure:
-	* id (string): Unique and random generated identifier
-		at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
-	* title (string): Title of the game sold
-	* price (number): The actual sale price in USD
-	* month (number): Month of the sale
-	* day (number): Day of the sale
-	* year (number): Year of the sale
+    * id (string): Unique and random generated identifier
+        at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
+    * title (string): Title of the game sold
+    * price (number): The actual sale price in USD
+    * month (number): Month of the sale
+    * day (number): Day of the sale
+    * year (number): Year of the sale
+    * customer_id (string): id from the crm
 """
 
 # everything you'll need is imported:
@@ -94,7 +96,7 @@ def get_lowest_price_item_id(table):
 	"""
 	index_index = 0
 	index_title = 1
-	index_price = -4
+	index_price = -5
 	index_first_game = 0
 	min_price = int(table[index_first_game][index_price])
 	lowest_price_games = []
@@ -129,9 +131,9 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
 		list: list of lists (the filtered table)
 	"""
 	
-	index_month = -3
-	index_day = -2
-	index_year = -1
+	index_month = 3
+	index_day = 4
+	index_year = 5
 	games_from_to = []
 	for game in table:
 		if year_from < int(game[index_year]) < year_to:
@@ -147,3 +149,387 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
 					games_from_to.append(game)
 	return convert_possible_item_in_list_into_int(games_from_to)
 
+
+
+
+
+
+# functions supports data abalyser
+# --------------------------------
+
+
+def get_title_by_id(id):
+
+    """
+    Reads the table with the help of the data_manager module.
+    Returns the title (str) of the item with the given id (str) on None om case of non-existing id.
+
+    Args:
+        id (str): the id of the item
+
+    Returns:
+        str: the title of the item
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    title_index = 1
+    id_index = 0
+    for item in table:
+        if item[id_index] == id:
+            return item[title_index]
+    return None
+    
+
+
+
+
+
+def get_title_by_id_from_table(table, id):
+
+    """
+    Returns the title (str) of the item with the given id (str) on None om case of non-existing id.
+
+    Args:
+        table (list of lists): the sales table
+        id (str): the id of the item
+
+    Returns:
+        str: the title of the item
+    """
+
+    # your code
+    title_index = 1
+    id_index = 0
+    for item in table:
+        if item[id_index] == id:
+            return item[title_index]
+    return None
+
+
+def get_item_id_sold_last():
+    """
+    Reads the table with the help of the data_manager module.
+    Returns the _id_ of the item that was sold most recently.
+
+    Returns:
+        str: the _id_ of the item that was sold most recently.
+    """
+
+    # your code
+    
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    id_index = 0
+    month_index = 3
+    day_index = 4
+    year_index = 5
+    last_sold_year = "0"
+    for item in table:
+        date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
+        if date > last_sold_year:
+            last_sold_year = date
+            last_sold_id = item[id_index]
+    return last_sold_id
+    
+
+
+def get_item_id_sold_last_from_table(table):
+    """
+    Returns the _id_ of the item that was sold most recently.
+
+    Args:
+        table (list of lists): the sales table
+
+    Returns:
+        str: the _id_ of the item that was sold most recently.
+    """
+
+    # your code
+    id_index = 0
+    month_index = 3
+    day_index = 4
+    year_index = 5
+    last_sold_year = "0"
+    for item in table:
+        date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
+        if date > last_sold_year:
+            last_sold_year = date
+            last_sold_id = item[id_index]
+    return last_sold_id
+
+
+def get_item_title_sold_last():
+    """
+    Returns the _title_ of the item that was sold most recently.
+
+    Args:
+        table (list of lists): the sales table
+
+    Returns:
+        str: the _title_ of the item that was sold most recently.
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    title_index = 1
+    month_index = 3
+    day_index = 4
+    year_index = 5
+    last_sold_year = "0"
+    for item in table:
+        date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
+        if date > last_sold_year:
+            last_sold_year = date
+            last_sold_title = item[title_index]
+    return last_sold_title
+
+
+
+
+def get_item_title_sold_last_from_table(table):
+    """
+    Returns the _title_ of the item that was sold most recently.
+
+    Args:
+        table (list of lists): the sales table
+
+    Returns:
+        str: the _title_ of the item that was sold most recently.
+    """
+
+    # your code
+    title_index = 1
+    month_index = 3
+    day_index = 4
+    year_index = 5
+    last_sold_year = "0"
+    for item in table:
+        date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
+        if date > last_sold_year:
+            last_sold_year = date
+            last_sold_title = item[title_index]
+    return last_sold_title
+
+
+def get_the_sum_of_prices(item_ids):
+    """
+    Reads the table of sales with the help of the data_manager module.
+    Returns the sum of the prices of the items in the item_ids.
+
+    Args:
+        item_ids (list of str): the ids
+
+    Returns:
+        number: the sum of the items' prices
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    price = 0
+    id_index = 0
+    price_index = 2
+    for item in item_ids:
+        for record in table:
+            if item == record[0]:
+                price += int(record[price_index])
+    return price
+
+
+
+
+def get_the_sum_of_prices_from_table(table, item_ids):
+    """
+    Returns the sum of the prices of the items in the item_ids.
+
+    Args:
+        table (list of lists): the sales table
+        item_ids (list of str): the ids
+
+    Returns:
+        number: the sum of the items' prices
+    """
+
+    # your code
+    price = 0
+    id_index = 0
+    price_index = 2
+    for item in item_ids:
+        for record in table:
+            if item == record[0]:
+                price += int(record[price_index])
+    return price
+
+
+def get_customer_id_by_sale_id(sale_id):
+    """
+    Reads the sales table with the help of the data_manager module.
+    Returns the customer_id that belongs to the given sale_id
+    or None if no such sale_id is in the table.
+
+    Args:
+         sale_id (str): sale id to search for
+    Returns:
+         str: customer_id that belongs to the given sale id
+    """
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    sale_id_index = 0
+    customer_id_index = -1
+    for item in table:
+        if sale_id == item[sale_id_index]:
+            return item[customer_id_index]
+    return None
+
+
+    # your code
+
+
+def get_customer_id_by_sale_id_from_table(table, sale_id):
+    """
+    Returns the customer_id that belongs to the given sale_id
+    or None if no such sale_id is in the table.
+
+    Args:
+        table: table to remove a record from
+        sale_id (str): sale id to search for
+    Returns:
+        str: customer_id that belongs to the given sale id
+    """
+
+    # your code
+    sale_id_index = 0
+    customer_id_index = -1
+    for item in table:
+        if sale_id == item[sale_id_index]:
+            return item[customer_id_index]
+    return None
+
+
+def get_all_customer_ids():
+    """
+    Reads the sales table with the help of the data_manager module.
+
+    Returns:
+         set of str: set of customer_ids that are present in the table
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    return set(item[-1] for item in table)
+
+
+def get_all_customer_ids_from_table(table):
+    """
+    Returns a set of customer_ids that are present in the table.
+
+    Args:
+        table (list of list): the sales table
+    Returns:
+         set of str: set of customer_ids that are present in the table
+    """
+
+    # your code
+    return set(item[-1] for item in table)
+
+
+def get_all_sales_ids_for_customer_ids():
+    """
+    Reads the customer-sales association table with the help of the data_manager module.
+    Returns a dictionary of (customer_id, sale_ids) where:
+        customer_id:
+        sale_ids (list): all the sales belong to the given customer
+    (one customer id belongs to only one tuple)
+
+    Returns:
+         (dict of (key, value): (customer_id, (list) sale_ids)) where the sale_ids list contains
+            all the sales id belong to the given customer_id
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    dictionary_of_customer_and_sales_ids = {}
+    customer_id_index = -1
+    sales_id_index = 0
+    for item in table:
+        if item[customer_id_index] in dictionary_of_customer_and_sales_ids.keys():
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]].append(item[sales_id_index])
+        else:
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]] = []
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]].append(item[sales_id_index])
+    return dictionary_of_customer_and_sales_ids
+
+
+
+def get_all_sales_ids_for_customer_ids_from_table(table):
+    """
+    Returns a dictionary of (customer_id, sale_ids) where:
+        customer_id:
+        sale_ids (list): all the sales belong to the given customer
+    (one customer id belongs to only one tuple)
+    Args:
+        table (list of list): the sales table
+    Returns:
+         (dict of (key, value): (customer_id, (list) sale_ids)) where the sale_ids list contains
+         all the sales id belong to the given customer_id
+    """
+
+    # your code
+    dictionary_of_customer_and_sales_ids = {}
+    customer_id_index = -1
+    sales_id_index = 0
+    for item in table:
+        if item[customer_id_index] in dictionary_of_customer_and_sales_ids.keys():
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]].append(item[sales_id_index])
+        else:
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]] = []
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]].append(item[sales_id_index])
+    return dictionary_of_customer_and_sales_ids
+
+
+def get_num_of_sales_per_customer_ids():
+    """
+     Reads the customer-sales association table with the help of the data_manager module.
+     Returns a dictionary of (customer_id, num_of_sales) where:
+        customer_id:
+        num_of_sales (number): number of sales the customer made
+     Returns:
+         dict of (key, value): (customer_id (str), num_of_sales (number))
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    dictionary_of_customer_and_sales_ids = {}
+    customer_id_index = -1
+    sales_id_index = 0
+    
+    for item in table:
+        try:
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]] += 1
+        except KeyError:
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]] = 1
+            
+    return dictionary_of_customer_and_sales_ids
+
+
+def get_num_of_sales_per_customer_ids_from_table(table):
+    """
+     Returns a dictionary of (customer_id, num_of_sales) where:
+        customer_id:
+        num_of_sales (number): number of sales the customer made
+     Args:
+        table (list of list): the sales table
+     Returns:
+         dict of (key, value): (customer_id (str), num_of_sales (number))
+    """
+
+    # your code
+    dictionary_of_customer_and_sales_ids = {}
+    customer_id_index = -1
+    sales_id_index = 0
+    
+    for item in table:
+        try:
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]] += 1
+        except KeyError:
+            dictionary_of_customer_and_sales_ids[item[customer_id_index]] = 1
+            
+    return dictionary_of_customer_and_sales_ids
