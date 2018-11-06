@@ -48,7 +48,7 @@ def get_the_last_buyer_id():
         str: Customer id of the last buyer
     """
 
-    # your code
+    return sales.get_customer_id_by_sale_id(sales.get_item_id_sold_last())
 
 
 def get_the_buyer_name_spent_most_and_the_money_spent():
