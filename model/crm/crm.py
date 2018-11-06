@@ -164,8 +164,8 @@ def get_name_by_id_from_table(table, id):
     Returns:
         str: the name of the customer
     """
-    id_index = 1
-    name_index = 2
+    id_index = 0
+    name_index = 1
     for item in table:
         if id == item[id_index]:
             return item[name_index]
