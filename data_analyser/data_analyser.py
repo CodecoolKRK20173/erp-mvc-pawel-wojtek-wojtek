@@ -9,10 +9,10 @@ Use the functions of the modules instead.
 # todo: importing everything you need
 
 # importing everything you need
-import ui
-import common
-from sales import sales
-from crm import crm
+from view import terminal_view
+from model import common
+from model import sales
+from model import crm
 
 
 def start_module():
@@ -37,9 +37,6 @@ def get_the_last_buyer_name():
     Returns:
         str: Customer name of the last buyer
     """
-    sales / def get_item_id_sold_last():
-    sales / def get_customer_id_by_sale_id(sale_id):
-    crm /  get_name_by_id(id):
 
     # your code
 

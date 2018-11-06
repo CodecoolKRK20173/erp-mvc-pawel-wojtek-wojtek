@@ -96,7 +96,7 @@ def get_lowest_price_item_id(table):
 	"""
 	index_index = 0
 	index_title = 1
-	index_price = -4
+	index_price = -5
 	index_first_game = 0
 	min_price = int(table[index_first_game][index_price])
 	lowest_price_games = []
@@ -131,9 +131,9 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
 		list: list of lists (the filtered table)
 	"""
 	
-	index_month = -3
-	index_day = -2
-	index_year = -1
+	index_month = 3
+	index_day = 4
+	index_year = 5
 	games_from_to = []
 	for game in table:
 		if year_from < int(game[index_year]) < year_to:
@@ -172,7 +172,18 @@ def get_title_by_id(id):
     """
 
     # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    title_index = 1
+    id_index = 0
+    for item in table:
+        if item[id_index] == id:
+            return item[title_index]
+    return None
     
+
+
+
+
 
 def get_title_by_id_from_table(table, id):
 
@@ -188,6 +199,12 @@ def get_title_by_id_from_table(table, id):
     """
 
     # your code
+    title_index = 1
+    id_index = 0
+    for item in table:
+        if item[id_index] == id:
+            return item[title_index]
+    return None
 
 
 def get_item_id_sold_last():
@@ -200,6 +217,20 @@ def get_item_id_sold_last():
     """
 
     # your code
+    
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    id_index = 0
+    month_index = 3
+    day_index = 4
+    year_index = 5
+    last_sold_year = "0"
+    for item in table:
+        date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
+        if date > last_sold_year:
+            last_sold_year = date
+            last_sold_id = item[id_index]
+    return last_sold_id
+    
 
 
 def get_item_id_sold_last_from_table(table):
@@ -214,6 +245,45 @@ def get_item_id_sold_last_from_table(table):
     """
 
     # your code
+    id_index = 0
+    month_index = 3
+    day_index = 4
+    year_index = 5
+    last_sold_year = "0"
+    for item in table:
+        date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
+        if date > last_sold_year:
+            last_sold_year = date
+            last_sold_id = item[id_index]
+    return last_sold_id
+
+
+def get_item_title_sold_last():
+    """
+    Returns the _title_ of the item that was sold most recently.
+
+    Args:
+        table (list of lists): the sales table
+
+    Returns:
+        str: the _title_ of the item that was sold most recently.
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    title_index = 1
+    month_index = 3
+    day_index = 4
+    year_index = 5
+    last_sold_year = "0"
+    for item in table:
+        date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
+        if date > last_sold_year:
+            last_sold_year = date
+            last_sold_title = item[title_index]
+    return last_sold_title
+
+
 
 
 def get_item_title_sold_last_from_table(table):
@@ -228,6 +298,17 @@ def get_item_title_sold_last_from_table(table):
     """
 
     # your code
+    title_index = 1
+    month_index = 3
+    day_index = 4
+    year_index = 5
+    last_sold_year = "0"
+    for item in table:
+        date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
+        if date > last_sold_year:
+            last_sold_year = date
+            last_sold_title = item[title_index]
+    return last_sold_title
 
 
 def get_the_sum_of_prices(item_ids):
@@ -243,6 +324,17 @@ def get_the_sum_of_prices(item_ids):
     """
 
     # your code
+    table = data_manager.get_table_from_file("model/sales/sales.csv")
+    price = 0
+    id_index = 0
+    price_index = 2
+    for item in item_ids:
+        for record in table:
+            if item == record[0]:
+                price += int(record[price_index])
+    return price
+
+
 
 
 def get_the_sum_of_prices_from_table(table, item_ids):
@@ -258,6 +350,14 @@ def get_the_sum_of_prices_from_table(table, item_ids):
     """
 
     # your code
+    price = 0
+    id_index = 0
+    price_index = 2
+    for item in item_ids:
+        for record in table:
+            if item == record[0]:
+                price += int(record[price_index])
+    return price
 
 
 def get_customer_id_by_sale_id(sale_id):
