@@ -59,7 +59,9 @@ def get_the_buyer_name_spent_most_and_the_money_spent():
         tuple: Tuple of customer name and the sum the customer spent eg.: ('Daniele Coach', 42)
     """
 
-    # your code
+    customer = get_the_buyer_id_spent_most_and_the_money_spent()
+    customer_name = crm.get_name_by_id(customer[0])
+    return (customer_name, customer[1])
 
 
 def get_the_buyer_id_spent_most_and_the_money_spent():
