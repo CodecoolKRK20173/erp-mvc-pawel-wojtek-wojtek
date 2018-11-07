@@ -51,8 +51,6 @@ def get_the_last_buyer_id():
 
     return sales.get_customer_id_by_sale_id(sales.get_item_id_sold_last())
 
-print(get_the_last_buyer_id())
-print(get_the_last_buyer_name())
 def get_the_buyer_name_spent_most_and_the_money_spent():
     """
     Returns the customer's _name_ who spent the most in sum and the money (s)he spent.
@@ -63,7 +61,6 @@ def get_the_buyer_name_spent_most_and_the_money_spent():
     name_index = 0
     sum_index = 1
     customer = get_the_buyer_id_spent_most_and_the_money_spent()
-    customer_name = customer[name_index]
     customer_name = crm.get_name_by_id(customer[name_index])
     return (customer_name, customer[sum_index])
 
@@ -83,8 +80,8 @@ def get_the_buyer_id_spent_most_and_the_money_spent():
     for customer, sales_ids in customers_sales_ids.items():
         sales_ids = sales.get_the_sum_of_prices(sales_ids)
         customers_spending.append((customer, sales_ids))
-    customers_spending = sorted(customers_spending, reverse = True, key = lambda x: x[sum_index])   
-    return customers_spending[0]
+    customers_spending_sorted = common.sort_buyers_spending(customers_spending)  
+    return customers_spending_sorted[0]
 
 
 def get_the_most_frequent_buyers_names(num=1):
@@ -127,7 +124,6 @@ def get_the_most_frequent_buyers_ids(num=1):
     number_of_items_bought = sales.get_num_of_sales_per_customer_ids()
     most_frequent_buyers = []
     sales_index = 1
-    sorted_number_of_items_bought = sorted(number_of_items_bought.items(), key=lambda x: x[sales_index])
     for key, value in number_of_items_bought.items():
         most_frequent_buyers.append((key, value))
     most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse = True, key = lambda x: x[sales_index])

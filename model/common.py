@@ -42,6 +42,10 @@ def sort_my(my_list):
 				my_list[j], my_list[j+1] = my_list[j+1], my_list[j]
 	return my_list
 
+def sort_buyers_spending(spending_list):
+	sum_index = 1
+	sorted_by_amount = sorted(spending_list, reverse = True, key = lambda x: x[sum_index])
+	return sorted_by_amount
 
 def convert_possible_item_in_list_into_int(my_list):
 	converted_list = []
