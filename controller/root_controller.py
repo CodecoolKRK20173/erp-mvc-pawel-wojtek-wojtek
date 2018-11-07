@@ -8,7 +8,7 @@ from controller import inventory_controller
 from controller import accounting_controller
 from controller import sales_controller
 from controller import crm_controller
-
+from controller import data_analyser
 
 def run():
 	os.system('clear')
@@ -18,7 +18,8 @@ def run():
 		"Inventory manager",
 		"Accounting manager",
 		"Sales manager",
-		"Customer Relationship Management (CRM)"
+		"Customer Relationship Management (CRM)",
+		"Data analyser"
 	]
 	choice = None
 	while choice != "0":
@@ -36,6 +37,8 @@ def run():
 			sales_controller.run()
 		elif choice == "6":
 			crm_controller.run()
+		elif choice == "7":
+			data_analyser.run()
 		elif choice == "0":
 			os.system('clear')
 		else:

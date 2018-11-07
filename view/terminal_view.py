@@ -3,6 +3,7 @@ import inspect
 import re
 import os
 from controller.common import bcolors
+from model import data_manager
 
 
 def print_table(table, title_list):
@@ -217,6 +218,18 @@ def get_inputs(list_labels, title):
 						validate_name(index_title_of_label, inputs, label, must)
 					elif label[index_type_of_input] == 'date':
 						validate_date(index_title_of_label, inputs, label, must)
+					elif label[index_type_of_input] == 'customer':
+						data_file = "model/crm/customers.csv"
+						customers = data_manager.get_table_from_file(data_file)
+						customer_names = [name[0:2] for name in customers]
+						print_table(customer_names[:], [['Name'],])
+						max_id = len(customer_names)
+						id_customer = get_inputs(['Index user to add', 'id', max_id], 'Users')
+						customer_id_hash = 0
+						for item in customer_names:
+							if item[0] == int(id_customer):
+								customer_id_hash = item[1]
+						inputs.append(customer_id_hash)
 					else:
 						print('')
 					break
