@@ -11,8 +11,13 @@ Use the functions of the modules instead.
 # importing everything you need
 from view import terminal_view
 from model import common
+<<<<<<< HEAD
 from model import sales
 from model import crm
+=======
+from model.sales import sales
+from model.crm import crm
+>>>>>>> wojtekch
 
 
 def start_module():
@@ -38,7 +43,7 @@ def get_the_last_buyer_name():
         str: Customer name of the last buyer
     """
 
-    # your code
+    return crm.get_name_by_id(get_the_last_buyer_id())
 
 
 def get_the_last_buyer_id():
@@ -49,9 +54,10 @@ def get_the_last_buyer_id():
         str: Customer id of the last buyer
     """
 
-    # your code
+    return sales.get_customer_id_by_sale_id(sales.get_item_id_sold_last())
 
-
+print(get_the_last_buyer_id())
+print(get_the_last_buyer_name())
 def get_the_buyer_name_spent_most_and_the_money_spent():
     """
     Returns the customer's _name_ who spent the most in sum and the money (s)he spent.
@@ -59,8 +65,13 @@ def get_the_buyer_name_spent_most_and_the_money_spent():
     Returns:
         tuple: Tuple of customer name and the sum the customer spent eg.: ('Daniele Coach', 42)
     """
+    name_index = 0
+    sum_index = 1
+    customer = get_the_buyer_id_spent_most_and_the_money_spent()
+    customer_name = customer[name_index]
+    customer_name = crm.get_name_by_id(customer[name_index])
+    return (customer_name, customer[sum_index])
 
-    # your code
 
 
 def get_the_buyer_id_spent_most_and_the_money_spent():
@@ -71,7 +82,14 @@ def get_the_buyer_id_spent_most_and_the_money_spent():
         tuple: Tuple of customer id and the sum the customer spent eg.: (aH34Jq#&, 42)
     """
 
-    # your code
+    customers_sales_ids = sales.get_all_sales_ids_for_customer_ids()
+    customers_spending = []
+    sum_index = 1
+    for customer, sales_ids in customers_sales_ids.items():
+        sales_ids = sales.get_the_sum_of_prices(sales_ids)
+        customers_spending.append((customer, sales_ids))
+    customers_spending = sorted(customers_spending, reverse = True, key = lambda x: x[sum_index])   
+    return customers_spending[0]
 
 
 def get_the_most_frequent_buyers_names(num=1):
@@ -87,7 +105,15 @@ def get_the_most_frequent_buyers_names(num=1):
             The first one bought the most frequent. eg.: [('Genoveva Dingess', 8), ('Missy Stoney', 3)]
     """
 
-    # your code
+    number_of_items_bought = get_the_most_frequent_buyers_ids(num)
+    names_of_the_most_frequent_buyers = []
+    customer_id_index = 0
+    for customer in number_of_items_bought:
+        customer = list(customer)
+        customer[customer_id_index] = crm.get_name_by_id(customer[customer_id_index])
+        names_of_the_most_frequent_buyers.append(tuple(customer))
+    return names_of_the_most_frequent_buyers
+
 
 
 def get_the_most_frequent_buyers_ids(num=1):
@@ -103,4 +129,13 @@ def get_the_most_frequent_buyers_ids(num=1):
             The first one bought the most frequent. eg.: [(aH34Jq#&, 8), (bH34Jq#&, 3)]
     """
 
-    # your code
+    number_of_items_bought = sales.get_num_of_sales_per_customer_ids()
+    most_frequent_buyers = []
+    sales_index = 1
+    sorted_number_of_items_bought = sorted(number_of_items_bought.items(), key=lambda x: x[sales_index])
+    for key, value in number_of_items_bought.items():
+        most_frequent_buyers.append((key, value))
+    most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse = True, key = lambda x: x[sales_index])
+    if len(most_frequent_buyers_sorted) > num:
+        return most_frequent_buyers_sorted[:num]
+    return most_frequent_buyers_sorted
