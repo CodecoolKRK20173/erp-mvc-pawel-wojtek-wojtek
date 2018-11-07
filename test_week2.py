@@ -3,12 +3,12 @@
 from test import *
 
 # Data Analyser module
-from data_analyser import data_analyser
+from model.data_analyser import data_analyser
 
 
 class DataAnalyserTester(unittest.TestCase):
     def test_forbidden_functions(self):
-        check_forbidden_functions(self, "data_analyser/data_analyser.py")
+        check_forbidden_functions(self, "model/data_analyser/data_analyser.py")
 
 
 class Week2CRMTester(unittest.TestCase):

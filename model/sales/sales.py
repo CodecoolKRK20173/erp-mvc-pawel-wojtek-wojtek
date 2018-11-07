@@ -276,6 +276,7 @@ def get_item_title_sold_last():
     day_index = 4
     year_index = 5
     last_sold_year = "0"
+    last_sold_title = ''
     for item in table:
         date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
         if date > last_sold_year:
@@ -303,6 +304,7 @@ def get_item_title_sold_last_from_table(table):
     day_index = 4
     year_index = 5
     last_sold_year = "0"
+    last_sold_title = ''
     for item in table:
         date = "%02d%02d%02d" %(int(item[year_index]), int(item[month_index]), int(item[day_index]))
         if date > last_sold_year:
