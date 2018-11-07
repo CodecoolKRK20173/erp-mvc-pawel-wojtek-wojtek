@@ -133,3 +133,12 @@ def get_the_most_frequent_buyers_ids(num=1):
     if len(most_frequent_buyers_sorted) > num:
         return most_frequent_buyers_sorted[:num]
     return most_frequent_buyers_sorted
+
+def get_customers_who_did_not_buy_anything():
+    customers_who_bought_something = sales.get_all_customer_ids()
+    all_customers = crm.get_all_customer_ids()
+    customers_who_didnt_buy = []
+    for customer in all_customers:
+        if customer not in customers_who_bought_something:
+            customers_who_didnt_buy.append(crm.get_name_by_id(customer))
+    return customers_who_didnt_buy

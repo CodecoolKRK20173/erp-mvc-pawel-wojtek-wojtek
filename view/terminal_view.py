@@ -59,49 +59,6 @@ def print_table(table, title_list):
 
         
 def print_result(result, label):
-<<<<<<< HEAD
-	"""
-	Displays results of the special functions.
-
-	Args:
-		result: result of the special function (string, list or dict)
-		label (str): label of the result
-
-	Returns:
-		None: This function doesn't return anything it only prints to console.
-	"""
-	os.system('clear')
-	print(bcolors.WARNING + bcolors.BOLD)
-	if type(result) == dict:
-		print(label + ' : ')
-		max_len = 0
-		for key, value in result.items():
-			max_len = len(key) if len(key) > max_len else max_len
-		for key, value in result.items():
-			print(' ' * 2 + key + '-' * (max_len - len(key) + 1) + '> '  + str(value))
-	elif 'hr_controller.py' in inspect.stack()[1][1]:
-		print(label, ' and '.join(result))
-	elif type(result) == list:
-		result_key = []
-		result_value = []
-		index_key = 0
-		index_value = 1
-		for item in result:
-			result_key.append(item.split(';')[index_key])
-			result_value.append(item.split(';')[index_value])
-		result = dict(zip(result_key, result_value))
-		print(label + ' : ')
-		max_len = 0
-		for key, value in result.items():
-			max_len = len(key) if len(key) > max_len else max_len
-		for key, value in result.items():
-			print(' ' * 2 + key + '-' * (max_len - len(key)) + '> ' + str(value))
-	else:
-		print(label + ': ' + str(result))
-	print(bcolors.ENDC)
-	
-	
-=======
     """
     Displays results of the special functions.
 
@@ -143,9 +100,17 @@ def print_result(result, label):
     else:
         print(label + ': ' + str(result))
     print(bcolors.ENDC)
+
+
+def print_list_result(result, label):
+    os.system('clear')
+    print(bcolors.WARNING + bcolors.BOLD)
+    print(label)
+    for item in result:
+        print(item)
+    print(bcolors.ENDC)
+
     
-    
->>>>>>> pawelp
 def print_menu(title, list_options, exit_message):
     """
     Displays a menu. Sample output:

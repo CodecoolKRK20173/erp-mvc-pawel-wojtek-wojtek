@@ -21,6 +21,7 @@ def run():
         'Get the buyer id spent most and the money spent',
         'Get the most frequent buyers names',
         'Get the most frequent buyers ids',
+        'Get buyers who did not buy anything',
         'Exit to main menu'
 
     ]
@@ -45,6 +46,8 @@ def run():
         elif user_choice == '6':
             buyers_ids = terminal_view.get_inputs([['Number of buyers', int], ], 'Number')
             terminal_view.print_result(dict(data_analyser.get_the_most_frequent_buyers_ids(int(buyers_ids[0]))), 'ID\'s of most frequent buyers')
+        elif user_choice == '7':
+            terminal_view.print_list_result(data_analyser.get_customers_who_did_not_buy_anything(), 'Customers who did not buy anything:')
         elif user_choice == '0':
             break
         else:

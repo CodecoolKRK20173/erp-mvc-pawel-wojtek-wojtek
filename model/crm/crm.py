@@ -170,3 +170,15 @@ def get_name_by_id_from_table(table, id):
         if id == item[id_index]:
             return item[name_index]
     return None
+
+def get_all_customer_ids():
+    """
+    Reads the sales table with the help of the data_manager module.
+
+    Returns:
+         set of str: set of customer_ids that are present in the table
+    """
+
+    # your code
+    table = data_manager.get_table_from_file("model/crm/customers.csv")
+    return set(item[0] for item in table)
