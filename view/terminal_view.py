@@ -414,12 +414,21 @@ def print_error_message(message):
         message (str): error message to be displayed
 
 
+<<<<<<< HEAD
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
     print(f'{bcolors.FAIL}Error: {message}{bcolors.ENDC}')
     
     
+=======
+	Returns:
+		None: This function doesn't return anything it only prints to console.
+	"""
+	print(f'{bcolors.FAIL}Error: {message}{bcolors.ENDC}')
+	
+
+>>>>>>> wojtekch
 class ErrorAdd(Exception):
     pass
 

@@ -49,6 +49,7 @@ def get_item_sold_between_dates():
             ["kH35Ju#&", "Age of Empires", 11, 3, 7, 2016]]
 
 
+
 def get_count_by_manufacturer_list():
     return {"Ensemble Studios": 4,
             "Edelweiss": 1,
@@ -235,7 +236,7 @@ class InventoryTester(unittest.TestCase):
 
 class DataAnalyserTester(unittest.TestCase):
     def test_forbidden_functions(self):
-        check_forbidden_functions(self, "data_analyser/data_analyser.py")
+        check_forbidden_functions(self, "model/data_analyser/data_analyser.py")
 
 
 def main():

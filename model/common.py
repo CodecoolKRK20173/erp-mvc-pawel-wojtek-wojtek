@@ -43,6 +43,7 @@ def sort_my(my_list):
 	return my_list
 
 
+
 def convert_possible_item_in_list_into_int(my_list):
 	converted_list = []
 	for game in my_list:

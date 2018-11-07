@@ -87,3 +87,8 @@ def write_records(*args):
 			terminal_view.print_error_message('Record doublet')
 		else:
 			args[index_func](args[index_table], args[index_id], args[index_inputs])
+
+def index_sorted_list(spending_list, index):
+	sorted_by_amount = sorted(spending_list, reverse = True, key = lambda x: x[index])
+	return sorted_by_amount
+	
