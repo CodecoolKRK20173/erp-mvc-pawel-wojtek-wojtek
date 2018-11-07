@@ -11,6 +11,8 @@ Use the functions of the modules instead.
 # importing everything you need
 from view import terminal_view
 from model import common
+from model import sales
+from model import crm
 from model.sales import sales
 from model.crm import crm
 from controller.common import index_sorted_list
