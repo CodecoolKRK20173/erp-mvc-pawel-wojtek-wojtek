@@ -166,8 +166,8 @@ class Week2DataAnalyserTester(unittest.TestCase):
         self.assertEqual(result, expected)
 
 
-#def main():
-    #unittest.main()
+def main():
+    unittest.main()
 
 
 if __name__ == '__main__':
