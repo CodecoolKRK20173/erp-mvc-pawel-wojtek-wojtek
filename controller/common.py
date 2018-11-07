@@ -87,3 +87,8 @@ def write_records(*args):
 			terminal_view.print_error_message('Record doublet')
 		else:
 			args[index_func](args[index_table], args[index_id], args[index_inputs])
+
+
+def index_sorted_list(most_frequent_buyers, sales_index):
+	most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse=True, key=lambda x: x[sales_index])
+	return most_frequent_buyers_sorted

@@ -137,29 +137,34 @@ def get_name_by_id(id):
     """
     Reads the table with the help of the data_manager module.
     Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
-
     Args:
         id (str): the id of the customer
-
     Returns:
         str: the name of the customer
     """
 
     # your code
-
-
+    table = data_manager.get_table_from_file("model/crm/customers.csv")
+    id_index = 0
+    name_index = 1
+    for item in table:
+        if id == item[id_index]:
+            return item[name_index]
+    return None
 
 def get_name_by_id_from_table(table, id):
     """
     Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
-
     Args:
         table (list of lists): the customer table
         id (str): the id of the customer
-
     Returns:
         str: the name of the customer
     """
-
-    # your code
+    id_index = 0
+    name_index = 1
+    for item in table:
+        if id == item[id_index]:
+            return item[name_index]
+    return None
 
