@@ -41,7 +41,10 @@ def run():
             terminal_view.print_result(data_analyser.get_the_buyer_id_spent_most_and_the_money_spent(), 'Person\'s id who spent most money and amount of this money')
         elif user_choice == '5':
             buyers = terminal_view.get_inputs([['Number of buyers', int], ], 'Number')
-            terminal_view.print_result(dict(data_analyser.get_the_most_frequent_buyers_names()), 'Names of most frequent buyers')
+            terminal_view.print_result(dict(data_analyser.get_the_most_frequent_buyers_names(int(buyers[0]))), 'Names of most frequent buyers')
+        elif user_choice == '6':
+            buyers_ids = terminal_view.get_inputs([['Number of buyers', int], ], 'Number')
+            terminal_view.print_result(dict(data_analyser.get_the_most_frequent_buyers_ids(int(buyers_ids[0]))), 'ID\'s of most frequent buyers')
         elif user_choice == '0':
             break
         else:

@@ -11,17 +11,11 @@ Use the functions of the modules instead.
 # importing everything you need
 from view import terminal_view
 from model import common
-<<<<<<< HEAD
 from model import sales
 from model import crm
-=======
 from model.sales import sales
 from model.crm import crm
-<<<<<<< HEAD:data_analyser/data_analyser.py
->>>>>>> wojtekch
-=======
 from controller.common import index_sorted_list
->>>>>>> wojtekch:model/data_analyser/data_analyser.py
 
 
 def start_module():
@@ -139,5 +133,3 @@ def get_the_most_frequent_buyers_ids(num=1):
     if len(most_frequent_buyers_sorted) > num:
         return most_frequent_buyers_sorted[:num]
     return most_frequent_buyers_sorted
-
-print(get_the_most_frequent_buyers_names(2))

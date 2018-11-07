@@ -2,7 +2,7 @@
 import inspect
 import re
 import os
-#from controller.common import bcolors
+from controller.common import bcolors
 
 
 def print_table(table, title_list):
@@ -77,7 +77,7 @@ def print_result(result, label):
         for key, value in result.items():
             max_len = len(key) if len(key) > max_len else max_len
         for key, value in result.items():
-            print(' ' * 2 + key + '-' * (max_len - len(key)) + '> '  + str(value))
+            print(' ' * 2 + key + '-' * (max_len - len(key) + 1) + '> '  + str(value))
     elif 'hr_controller.py' in inspect.stack()[1][1]:
         print(label, ' and '.join(result))
     elif type(result) == list:
@@ -414,21 +414,12 @@ def print_error_message(message):
         message (str): error message to be displayed
 
 
-<<<<<<< HEAD
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
     print(f'{bcolors.FAIL}Error: {message}{bcolors.ENDC}')
     
     
-=======
-	Returns:
-		None: This function doesn't return anything it only prints to console.
-	"""
-	print(f'{bcolors.FAIL}Error: {message}{bcolors.ENDC}')
-	
-
->>>>>>> wojtekch
 class ErrorAdd(Exception):
     pass
 

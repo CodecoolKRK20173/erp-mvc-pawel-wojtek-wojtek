@@ -145,24 +145,14 @@ def get_name_by_id(id):
     """
 
     # your code
-<<<<<<< HEAD
-    table = data_manager.get_table_from_file("model/customers/customers.csv")
-    id_index = 1
-    name_index = 2
-=======
     table = data_manager.get_table_from_file("model/crm/customers.csv")
     id_index = 0
     name_index = 1
->>>>>>> wojtekch
     for item in table:
         if id == item[id_index]:
             return item[name_index]
     return None
 
-<<<<<<< HEAD
-
-=======
->>>>>>> wojtekch
 def get_name_by_id_from_table(table, id):
     """
     Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
@@ -174,13 +164,8 @@ def get_name_by_id_from_table(table, id):
     Returns:
         str: the name of the customer
     """
-<<<<<<< HEAD
-    id_index = 1
-    name_index = 2
-=======
     id_index = 0
     name_index = 1
->>>>>>> wojtekch
     for item in table:
         if id == item[id_index]:
             return item[name_index]
