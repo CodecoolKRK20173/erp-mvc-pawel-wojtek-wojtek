@@ -131,3 +131,5 @@ def get_the_most_frequent_buyers_ids(num=1):
     if len(most_frequent_buyers_sorted) > num:
         return most_frequent_buyers_sorted[:num]
     return most_frequent_buyers_sorted
+
+print(get_the_most_frequent_buyers_names(2))

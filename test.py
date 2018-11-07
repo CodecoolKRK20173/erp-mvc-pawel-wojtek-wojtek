@@ -189,13 +189,13 @@ class SalesTester(unittest.TestCase):
         table = data_manager.get_table_from_file(self.data_file)
         result = sales.get_lowest_price_item_id(table)
         self.assertEqual(result, "kH35Ju#&")
-"""
+
     def test_get_items_sold_between(self):
         table = data_manager.get_table_from_file(self.data_file)
         expected = get_item_sold_between_dates()
         result = sales.get_items_sold_between(table, 2, 12, 2016, 7, 6, 2016)
         compare_lists(self, expected, result)
-"""
+
 
 class StoreTester(unittest.TestCase):
     data_file = "model/store/games_test.csv"
