@@ -417,7 +417,7 @@ def print_error_message(message):
 	"""
 	print(f'{bcolors.FAIL}Error: {message}{bcolors.ENDC}')
 	
-	
+
 class ErrorAdd(Exception):
 	pass
 

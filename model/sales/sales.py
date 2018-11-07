@@ -483,7 +483,6 @@ def get_all_sales_ids_for_customer_ids_from_table(table):
             dictionary_of_customer_and_sales_ids[item[customer_id_index]].append(item[sales_id_index])
     return dictionary_of_customer_and_sales_ids
 
-
 def get_num_of_sales_per_customer_ids():
     """
      Reads the customer-sales association table with the help of the data_manager module.

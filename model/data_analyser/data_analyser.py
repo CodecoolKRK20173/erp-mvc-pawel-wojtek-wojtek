@@ -13,6 +13,7 @@ from view import terminal_view
 from model import common
 from model.sales import sales
 from model.crm import crm
+from controller.common import index_sorted_list
 
 
 def start_module():
@@ -80,7 +81,7 @@ def get_the_buyer_id_spent_most_and_the_money_spent():
     for customer, sales_ids in customers_sales_ids.items():
         sales_ids = sales.get_the_sum_of_prices(sales_ids)
         customers_spending.append((customer, sales_ids))
-    customers_spending_sorted = common.sort_buyers_spending(customers_spending)  
+    customers_spending_sorted = index_sorted_list(customers_spending, sum_index)  
     return customers_spending_sorted[0]
 
 
@@ -126,7 +127,7 @@ def get_the_most_frequent_buyers_ids(num=1):
     sales_index = 1
     for key, value in number_of_items_bought.items():
         most_frequent_buyers.append((key, value))
-    most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse = True, key = lambda x: x[sales_index])
+    most_frequent_buyers_sorted = index_sorted_list(most_frequent_buyers, sales_index)
     if len(most_frequent_buyers_sorted) > num:
         return most_frequent_buyers_sorted[:num]
     return most_frequent_buyers_sorted
