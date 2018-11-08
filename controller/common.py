@@ -88,14 +88,7 @@ def write_records(*args):
 		else:
 			args[index_func](args[index_table], args[index_id], args[index_inputs])
 
-<<<<<<< HEAD
 def index_sorted_list(spending_list, index):
 	sorted_by_amount = sorted(spending_list, reverse = True, key = lambda x: x[index])
 	return sorted_by_amount
 	
-=======
-
-def index_sorted_list(most_frequent_buyers, sales_index):
-	most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse=True, key=lambda x: x[sales_index])
-	return most_frequent_buyers_sorted
->>>>>>> wojtekg

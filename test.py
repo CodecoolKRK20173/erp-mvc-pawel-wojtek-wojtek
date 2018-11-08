@@ -236,13 +236,8 @@ class InventoryTester(unittest.TestCase):
 
 
 class DataAnalyserTester(unittest.TestCase):
-<<<<<<< HEAD
-    def test_forbidden_functions(self):
-        check_forbidden_functions(self, "model/data_analyser/data_analyser.py")
-=======
 	def test_forbidden_functions(self):
 		check_forbidden_functions(self, "model/data_analyser/data_analyser.py")
->>>>>>> wojtekg
 
 
 def main():
