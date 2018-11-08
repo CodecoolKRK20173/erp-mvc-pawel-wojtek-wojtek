@@ -132,14 +132,23 @@ def get_subscribed_emails(table):
 # functions supports data analyser
 # --------------------------------
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> wojtekg
 def get_name_by_id(id):
     """
     Reads the table with the help of the data_manager module.
     Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
+<<<<<<< HEAD
 
     Args:
         id (str): the id of the customer
 
+=======
+    Args:
+        id (str): the id of the customer
+>>>>>>> wojtekg
     Returns:
         str: the name of the customer
     """
@@ -156,11 +165,17 @@ def get_name_by_id(id):
 def get_name_by_id_from_table(table, id):
     """
     Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
+<<<<<<< HEAD
 
     Args:
         table (list of lists): the customer table
         id (str): the id of the customer
 
+=======
+    Args:
+        table (list of lists): the customer table
+        id (str): the id of the customer
+>>>>>>> wojtekg
     Returns:
         str: the name of the customer
     """
@@ -171,6 +186,7 @@ def get_name_by_id_from_table(table, id):
             return item[name_index]
     return None
 
+<<<<<<< HEAD
 def get_all_customer_ids():
     """
     Reads the sales table with the help of the data_manager module.
@@ -182,3 +198,5 @@ def get_all_customer_ids():
     # your code
     table = data_manager.get_table_from_file("model/crm/customers.csv")
     return set(item[0] for item in table)
+=======
+>>>>>>> wojtekg

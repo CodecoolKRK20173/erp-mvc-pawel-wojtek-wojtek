@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/bq666/Workspace/erp-mvc-test-master/venv"
+set -gx VIRTUAL_ENV "/home/bq666/Workspace/erp-mvc-pawel-wojtek-wojtek/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

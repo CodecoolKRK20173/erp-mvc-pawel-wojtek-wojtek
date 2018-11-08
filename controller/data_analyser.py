@@ -15,7 +15,7 @@ def run():
 	Returns:
 		None
 	"""
-
+	
 	list_options = [
 		'Sales',
 		'Show all data',
@@ -37,11 +37,7 @@ def run():
 			['Month', 'month'],
 			['Day', 'day'],
 			['Year', 'year'],
-<<<<<<< HEAD
-            ['Customer ID', str],
-=======
-			['Customer', 'customer']
->>>>>>> wojtekg
+			['Customer', str]
 		]
 		user_choice = terminal_view.get_choice(list_options)
 		if user_choice in ['1', '2', '3', '4']:

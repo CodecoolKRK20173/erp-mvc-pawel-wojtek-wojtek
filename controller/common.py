@@ -18,7 +18,7 @@ class bcolors:
 
 def check_if_empty(list):
 	if not list:
-		print("There is no such record.")
+		terminal_view.print_error_message("There is no such record.")
 		return False
 	return True
 
@@ -31,7 +31,7 @@ def make_crud(crud_module, list_labels, list_options, max_id, table, user_choice
 	# 		test += 1
 	
 	if test == 3 and user_choice in ['2', '4']:
-		for index, item in enumerate(list_labels):
+		for index, item in  enumerate(list_labels):
 			if item[1] == 'month':
 				list_labels_buff.append(['Date', 'date'])
 			elif item[1] in ['year', 'day']:
@@ -88,7 +88,14 @@ def write_records(*args):
 		else:
 			args[index_func](args[index_table], args[index_id], args[index_inputs])
 
+<<<<<<< HEAD
 def index_sorted_list(spending_list, index):
 	sorted_by_amount = sorted(spending_list, reverse = True, key = lambda x: x[index])
 	return sorted_by_amount
 	
+=======
+
+def index_sorted_list(most_frequent_buyers, sales_index):
+	most_frequent_buyers_sorted = sorted(most_frequent_buyers, reverse=True, key=lambda x: x[sales_index])
+	return most_frequent_buyers_sorted
+>>>>>>> wojtekg
