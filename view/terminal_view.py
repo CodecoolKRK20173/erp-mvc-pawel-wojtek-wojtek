@@ -2,7 +2,7 @@
 import inspect
 import re
 import os
-from controller.common import bcolors
+#from controller.common import bcolors
 
 
 def print_table(table, title_list):

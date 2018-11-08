@@ -8,11 +8,7 @@ from model.data_analyser import data_analyser
 
 class DataAnalyserTester(unittest.TestCase):
     def test_forbidden_functions(self):
-<<<<<<< HEAD
-        check_forbidden_functions(self, "model/data_analyser/data_analyser.py")
-=======
         check_forbidden_functions(self, 'model/data_analyser/data_analyser.py')
->>>>>>> wojtekch
 
 
 class Week2CRMTester(unittest.TestCase):
