@@ -2,12 +2,8 @@
 import inspect
 import re
 import os
-<<<<<<< HEAD
-#from controller.common import bcolors
-=======
 from controller.common import bcolors
 from model import data_manager
->>>>>>> wojtekg
 
 
 def print_table(table, title_list):
