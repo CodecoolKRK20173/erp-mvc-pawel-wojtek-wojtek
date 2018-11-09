@@ -5,11 +5,11 @@ from controller import root_controller
 
 
 def main():
-	root_controller.run()
+    root_controller.run()
 
 
 if __name__ == '__main__':
-	main()
+    main()
 
 
 #  TODO czy jestes pewny ze chcesz usunąć ?  dodaj save do kazdego kontrolera
